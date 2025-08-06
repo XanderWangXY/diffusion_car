@@ -1,0 +1,423 @@
+<sdf version='1.7'>
+  <model name='car_description'>
+    <link name='base_link'>
+      <inertial>
+        <pose>0.003395 2e-06 -0.001799 0 -0 0</pose>
+        <mass>1.25177</mass>
+        <inertia>
+          <ixx>0.00158281</ixx>
+          <ixy>-3.36131e-06</ixy>
+          <ixz>0.00015117</ixz>
+          <iyy>0.00191613</iyy>
+          <iyz>-8.07638e-07</iyz>
+          <izz>0.00272111</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://car/meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__IMU_Link_collision_1'>
+        <pose>-0.036137 0.011434 0.0646 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://car/meshes/IMU_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__Laser_Link_collision_2'>
+        <pose>0.0875 0 0.039 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://car/meshes/Laser_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://car/meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__IMU_Link_visual_1'>
+        <pose>-0.036137 0.011434 0.0646 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://car/meshes/IMU_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <sensor name="tb3_imu" type="imu">
+        <always_on>true</always_on>
+        <update_rate>200</update_rate>
+        <imu>
+          <angular_velocity>
+            <x>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+              </noise>
+            </z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+              </noise>
+            </z>
+          </linear_acceleration>
+        </imu>
+        <plugin name="turtlebot3_imu" filename="libgazebo_ros_imu_sensor.so">
+          <ros>
+            <!-- <namespace>/tb3</namespace> -->
+            <remapping>~/out:=imu</remapping>
+          </ros>
+        </plugin>
+      </sensor>
+      <visual name='base_link_fixed_joint_lump__Laser_Link_visual_2'>
+        <pose>0.0875 0 0.039 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://car/meshes/Laser_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <sensor name="hls_lfcd_lds" type="ray">
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+        <pose>0.08 0 0.0 0 0 0</pose>
+        <update_rate>30</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>180</samples>
+              <resolution>1.000000</resolution>
+              <min_angle>-1.57079</min_angle>
+              <max_angle>1.57079</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.20000</min>
+            <max>7</max>
+            <resolution>0.015000</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </ray>
+        <plugin name="turtlebot3_laserscan" filename="libgazebo_ros_ray_sensor.so">
+          <ros>
+            <!-- <namespace>/tb3</namespace> -->
+            <remapping>~/out:=scan</remapping>
+          </ros>
+          <output_type>sensor_msgs/LaserScan</output_type>
+          <frame_name>base_scan</frame_name>
+        </plugin>
+      </sensor>
+    </link>
+    <joint name='Rotate_Joint' type='revolute'>
+      <pose relative_to='base_link'>0.045 0 0.0624 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>Rotate_Link</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <limit>
+          <effort>0</effort>
+          <velocity>1</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='Rotate_Link'>
+      <pose relative_to='Rotate_Joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.010906 -0.001083 0.032549 0 -0 0</pose>
+        <mass>0.24695</mass>
+        <inertia>
+          <ixx>0.00026873</ixx>
+          <ixy>1.09087e-05</ixy>
+          <ixz>1.47649e-06</ixz>
+          <iyy>0.000326706</iyy>
+          <iyz>-3.64126e-07</iyz>
+          <izz>0.000507501</izz>
+        </inertia>
+      </inertial>
+      <collision name='Rotate_Link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://car/meshes/Rotate_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='Rotate_Link_fixed_joint_lump__Camera_Link_collision_1'>
+        <pose>0.058297 -0.009078 0.031 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://car/meshes/Camera_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='Rotate_Link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://car/meshes/Rotate_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='Rotate_Link_fixed_joint_lump__Camera_Link_visual_1'>
+        <pose>0.058297 -0.009078 0.031 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://car/meshes/Camera_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Wheel1_Joint' type='revolute'>
+      <pose relative_to='base_link'>0.1206 0.1033 -0.0421 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>Wheel1_Link</child>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='Wheel1_Link'>
+      <pose relative_to='Wheel1_Joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>-0 0.003008 -0 0 -0 0</pose>
+        <mass>0.104332</mass>
+        <inertia>
+          <ixx>6.02373e-05</ixx>
+          <ixy>-6.00657e-20</ixy>
+          <ixz>1.09606e-20</ixz>
+          <iyy>0.000101412</iyy>
+          <iyz>2.84738e-21</iyz>
+          <izz>6.02373e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='Wheel1_Link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://car/meshes/Wheel1_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='Wheel1_Link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://car/meshes/Wheel1_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Wheel2_Joint' type='revolute'>
+      <pose relative_to='base_link'>0.1206 -0.1033 -0.0421 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>Wheel2_Link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='Wheel2_Link'>
+      <pose relative_to='Wheel2_Joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 -0.003008 -0 0 -0 0</pose>
+        <mass>0.104332</mass>
+        <inertia>
+          <ixx>6.02373e-05</ixx>
+          <ixy>-1.25896e-20</ixy>
+          <ixz>-1.11183e-20</ixz>
+          <iyy>0.000101412</iyy>
+          <iyz>-3.94075e-21</iyz>
+          <izz>6.02373e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='Wheel2_Link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://car/meshes/Wheel2_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='Wheel2_Link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://car/meshes/Wheel2_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Wheel3_Joint' type='revolute'>
+      <pose relative_to='base_link'>-0.0895 0.1033 -0.0421 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>Wheel3_Link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='Wheel3_Link'>
+      <pose relative_to='Wheel3_Joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0.003008 -0 0 -0 0</pose>
+        <mass>0.104332</mass>
+        <inertia>
+          <ixx>6.02373e-05</ixx>
+          <ixy>-2.17457e-20</ixy>
+          <ixz>1.09832e-21</ixz>
+          <iyy>0.000101412</iyy>
+          <iyz>-6.38133e-21</iyz>
+          <izz>6.02373e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='Wheel3_Link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://car/meshes/Wheel3_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='Wheel3_Link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://car/meshes/Wheel3_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Wheel4_Joint' type='revolute'>
+      <pose relative_to='base_link'>-0.0895 -0.1033 -0.0421 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>Wheel4_Link</child>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='Wheel4_Link'>
+      <pose relative_to='Wheel4_Joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>-0 -0.003008 0 0 -0 0</pose>
+        <mass>0.104332</mass>
+        <inertia>
+          <ixx>6.02373e-05</ixx>
+          <ixy>-7.10434e-21</ixy>
+          <ixz>-8.82313e-21</ixz>
+          <iyy>0.000101412</iyy>
+          <iyz>-2.09053e-21</iyz>
+          <izz>6.02373e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='Wheel4_Link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://car/meshes/Wheel4_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='Wheel4_Link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://car/meshes/Wheel4_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>

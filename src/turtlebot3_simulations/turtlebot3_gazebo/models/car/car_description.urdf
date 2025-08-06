@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="car_description">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00385577446640479 -5.28549064362791E-06 -0.00678892934073978"
+        rpy="0 0 0" />
+      <mass
+        value="1.1259205200241" />
+      <inertia
+        ixx="0.00121558715103643"
+        ixy="-2.92631110981525E-06"
+        ixz="-5.11852486548908E-06"
+        iyy="0.0010529029183663"
+        iyz="-5.11454974354344E-07"
+        izz="0.00213009654147591" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://turtlebot3_simulations/turtlebot3_gazebo/models/car/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.4" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://turtlebot3_simulations/turtlebot3_gazebo/models/car/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Wheel1_Link">
+    <inertial>
+      <origin
+        xyz="-2.77555756156289E-17 0.00300778309197161 -6.93889390390723E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.104332424021832" />
+      <inertia
+        ixx="6.02373130572536E-05"
+        ixy="-6.00656581852211E-20"
+        ixz="1.0960647987307E-20"
+        iyy="0.000101411762990075"
+        iyz="2.84738280055984E-21"
+        izz="6.02373130572536E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://turtlebot3_simulations/turtlebot3_gazebo/models/car/meshes/Wheel1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.968627450980392 0.258823529411765 0.258823529411765 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://turtlebot3_simulations/turtlebot3_gazebo/models/car/meshes/Wheel1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Wheel1_Joint"
+    type="continuous">
+    <origin
+      xyz="0.120600000000002 0.103299999999998 -0.0420999999999999"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Wheel1_Link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="Wheel2_Link">
+    <inertial>
+      <origin
+        xyz="2.77555756156289E-17 -0.0030077830919716 -2.08166817117217E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.104332424021832" />
+      <inertia
+        ixx="6.02373130572536E-05"
+        ixy="-1.25896013174041E-20"
+        ixz="-1.11182939506063E-20"
+        iyy="0.000101411762990075"
+        iyz="-3.9407489651342E-21"
+        izz="6.02373130572536E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://turtlebot3_simulations/turtlebot3_gazebo/models/car/meshes/Wheel2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.968627450980392 0.258823529411765 0.258823529411765 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://turtlebot3_simulations/turtlebot3_gazebo/models/car/meshes/Wheel2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Wheel2_Joint"
+    type="continuous">
+    <origin
+      xyz="0.120599999999998 -0.103300000000002 -0.0421"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Wheel2_Link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="Wheel3_Link">
+    <inertial>
+      <origin
+        xyz="6.93889390390723E-18 0.00300778309197158 -6.93889390390723E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.104332424021832" />
+      <inertia
+        ixx="6.02373130572536E-05"
+        ixy="-2.1745731605275E-20"
+        ixz="1.09832446948927E-21"
+        iyy="0.000101411762990075"
+        iyz="-6.38133161641675E-21"
+        izz="6.02373130572536E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://turtlebot3_simulations/turtlebot3_gazebo/models/car/meshes/Wheel3_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.968627450980392 0.258823529411765 0.258823529411765 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://turtlebot3_simulations/turtlebot3_gazebo/models/car/meshes/Wheel3_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Wheel3_Joint"
+    type="continuous">
+    <origin
+      xyz="-0.0894999999999984 0.103300000000001 -0.0420999999999999"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Wheel3_Link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="Wheel4_Link">
+    <inertial>
+      <origin
+        xyz="-6.93889390390723E-18 -0.00300778309197161 6.93889390390723E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.104332424021832" />
+      <inertia
+        ixx="6.02373130572536E-05"
+        ixy="-7.10434495655617E-21"
+        ixz="-8.82312523497114E-21"
+        iyy="0.000101411762990075"
+        iyz="-2.09052915827973E-21"
+        izz="6.02373130572536E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://turtlebot3_simulations/turtlebot3_gazebo/models/car/meshes/Wheel4_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.968627450980392 0.258823529411765 0.258823529411765 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://turtlebot3_simulations/turtlebot3_gazebo/models/car/meshes/Wheel4_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Wheel4_Joint"
+    type="continuous">
+    <origin
+      xyz="-0.0895000000000016 -0.103299999999999 -0.0420999999999999"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Wheel4_Link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="Laser_Link">
+    <inertial>
+      <origin
+        xyz="5.55111512312578E-17 2.81762340560102E-17 -0.0185369001460336"
+        rpy="0 0 0" />
+      <mass
+        value="0.0435791296962764" />
+      <inertia
+        ixx="8.67684171390374E-06"
+        ixy="-4.09389779728385E-21"
+        ixz="1.00565194348086E-20"
+        iyy="8.67684171390374E-06"
+        iyz="6.56641139163432E-21"
+        izz="9.52052043485644E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://turtlebot3_simulations/turtlebot3_gazebo/models/car/meshes/Laser_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://turtlebot3_simulations/turtlebot3_gazebo/models/car/meshes/Laser_Link.STL" />
+      </geometry>
+    </collision>
+    <!-- 添加激光雷达传感器配置 -->
+    <gazebo reference="Laser_Link">
+        <sensor type="ray" name="hls_lfcd_lds">
+            <always_on>true</always_on>
+            <visualize>true</visualize>
+            <update_rate>30</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>180</samples>
+                        <resolution>1.000000</resolution>
+                        <min_angle>-1.57079</min_angle>
+                        <max_angle>1.57079</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.20000</min>
+                    <max>7</max>
+                    <resolution>0.015000</resolution>
+                </range>
+            </ray>
+            <plugin name="car_laserscan" filename="libgazebo_ros_ray_sensor.so">
+                <ros>
+                    <remapping>~/out:=scan</remapping>
+                </ros>
+                <output_type>sensor_msgs/LaserScan</output_type>
+                <frame_name>Laser_Link</frame_name>
+            </plugin>
+        </sensor>
+    </gazebo>
+  </link>
+  <joint
+    name="Laser_Joint"
+    type="fixed">
+    <origin
+      xyz="0.0875000000000002 0 0.039"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Laser_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Rotate_Link">
+    <inertial>
+      <origin
+        xyz="0.00140937910803471 0.000586988203065499 0.0329656791245305"
+        rpy="0 0 0" />
+      <mass
+        value="0.194447972303587" />
+      <inertia
+        ixx="0.000232102462635404"
+        ixy="9.32034761938706E-07"
+        ixz="-2.14617010579E-06"
+        iyy="0.000238130924502294"
+        iyz="2.72926301777156E-07"
+        izz="0.000387667416319594" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://turtlebot3_simulations/turtlebot3_gazebo/models/car/meshes/Rotate_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://turtlebot3_simulations/turtlebot3_gazebo/models/car/meshes/Rotate_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Rotate_Joint"
+    type="continuous">
+    <origin
+      xyz="0.045 0 0.0624"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Rotate_Link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-2.4"
+      upper="2.4"
+      effort="0"
+      velocity="1" />
+  </joint>
+  <link
+    name="Camera_Link">
+    <inertial>
+      <origin
+        xyz="-0.0122187828744362 0.00181025986705102 4.7015781001053E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.0525016575385778" />
+      <inertia
+        ixx="3.39175949884477E-05"
+        ixy="-4.52830286647172E-06"
+        ixz="1.48737829289248E-09"
+        iyy="5.92903286632603E-06"
+        iyz="-2.85795865670644E-10"
+        izz="3.47955193576065E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://turtlebot3_simulations/turtlebot3_gazebo/models/car/meshes/Camera_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://turtlebot3_simulations/turtlebot3_gazebo/models/car/meshes/Camera_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Camera_Joint"
+    type="fixed">
+    <origin
+      xyz="0.0582974023785422 -0.00907815377234829 0.0309999999999999"
+      rpy="0 0 0" />
+    <parent
+      link="Rotate_Link" />
+    <child
+      link="Camera_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="IMU_Link">
+    <inertial>
+      <origin
+        xyz="-0.0113313612234125 -0.0113334300239669 -0.00990071533408837"
+        rpy="0 0 0" />
+      <mass
+        value="0.0822710026800078" />
+      <inertia
+        ixx="4.63026191664725E-05"
+        ixy="-8.59443623841917E-07"
+        ixz="-1.12793854458609E-06"
+        iyy="2.09520749911415E-05"
+        iyz="2.01928793917295E-07"
+        izz="6.01472516141147E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://turtlebot3_simulations/turtlebot3_gazebo/models/car/meshes/IMU_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://turtlebot3_simulations/turtlebot3_gazebo/models/car/meshes/IMU_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="IMU_Joint"
+    type="fixed">
+    <origin
+      xyz="-0.0361374624339492 0.0114342044504921 0.0646"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="IMU_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
